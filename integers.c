@@ -1,19 +1,21 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-int askForInteger(void) {
-  int number;
-  printf("Enter an integer: ");
-  scanf(" %d", &number);
+#define MAX_DIGITS 10
 
-  return number;
+void askForInteger(char* number[MAX_DIGITS]) {
+  printf("Enter an integer: ");
+  scanf(" %s", number);
 }
 
 bool sameDigits(const int number) {}
 
 int main() {
+  char number[MAX_DIGITS];
+
   do {
-    int number = askForInteger();
+    askForInteger(number);
+    puts(number);
   } while (true);
 
   return 0;
