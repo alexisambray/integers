@@ -29,7 +29,8 @@ bool sameDigits(const char* number) {
 
 bool uniqueAscendingDigits(const char* number) {
   for (int i = 0; i < strlen(number) - 1; i++) {
-    if (number[i] >= number[i + 1]) {  // Ascending order
+    if (number[i] >= number[i + 1]) {  // If first number is greater than next
+                                       // number, return false
       return false;
     }
   }
@@ -38,15 +39,19 @@ bool uniqueAscendingDigits(const char* number) {
 
 int main() {
   char* number;
-  bool meetsRule;
+  bool meetsSame = false, meetsUniqueAscending = false;
 
   do {
     number = askForInteger();
-    meetsRule = sameDigits(number);
+
+    if (!meetsSame) {  // If it is already true, no need to check again
+      meetsSame = sameDigits(number);
+    }
+    if (!meetsUniqueAscending) {
+      meetsUniqueAscending = uniqueAscendingDigits(number);
+    }
     free(number);
-  } while (!meetsRule);
+  } while (!(meetsUniqueAscending && meetsUniqueAscending));
 
   return 0;
 }
-
-// "1"
