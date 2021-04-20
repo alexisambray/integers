@@ -18,8 +18,18 @@ bool sameDigits(const char* number) {
   if (strlen(number) < 2) {  // Check length of string
     return false;
   }
-  for (int i = 0; i < strlen(number) - 1; i++) {
+  for (int i = 0; i < strlen(number) - 1;
+       i++) {  // Until second to the last number
     if (number[i] != number[i + 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool uniqueAscendingDigits(const char* number) {
+  for (int i = 0; i < strlen(number) - 1; i++) {
+    if (number[i] >= number[i + 1]) {  // Ascending order
       return false;
     }
   }
@@ -39,4 +49,4 @@ int main() {
   return 0;
 }
 
-// "11111"
+// "1"
