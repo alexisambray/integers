@@ -28,11 +28,13 @@ bool sameDigits(const char* number) {
 
 int main() {
   char* number;
+  bool meetsRule;
 
   do {
     number = askForInteger();
+    meetsRule = sameDigits(number);
     free(number);
-  } while (!sameDigits(number));
+  } while (!meetsRule);
 
   return 0;
 }
